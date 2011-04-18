@@ -1,7 +1,7 @@
 RewriteEngine on
 
-RewriteCond %{HTTP_HOST} ^def\.com
-RewriteRule (.*) http://www.def.com/$1 [R=301,L]
+#RewriteCond %{HTTP_HOST} ^def\.com
+#RewriteRule (.*) http://www.def.com/$1 [R=301,L]
 
 RewriteCond $1 !^(index\.php|www|robots\.txt|sitemap\.xml)
 RewriteRule ^(.*)$ index.php/$1
