@@ -1,0 +1,80 @@
+body { font: 9.5pt/1.45em tahoma,Arial,verdana;   color: #392724;  background: #f5fbff url(../img/bg.png) repeat-x top;
+	   padding: 0;  margin: 0; }
+*>a { outline: none; }
+a img { border-style: none; }
+h1 { margin: 16px 0 12px;  font: bold 15pt/1.4em "Trebuchet MS",Arial,verdana; }
+h2 { margin: 16px 0 12px;  font: bold 13pt/1.4em "Trebuchet MS",Arial,verdana; }
+h3 { margin: 16px 0 12px;  font: bold 12pt/1.4em "Trebuchet MS",Arial,verdana; }
+p { margin: 7px 0; }
+a { color: #b22f0c; }
+a:hover { text-decoration: none; }
+ul { margin: 0;  padding: 0;  list-style: none; }
+li { padding: 0 0 0 22px;  margin: 7px 0;  background: url(../img/dot.png) no-repeat 5px 5px; }
+
+							/****** ALL *******/
+							
+.all { width: 915px;  margin: 0 auto;  position: relative; }
+.index-up { font-size: 70%;  position: relative; top: -3px; }
+.clear { clear: both;  height: 0; }
+.smaller { font-size: 90%; }
+.bigger { font-size: 110% }
+.zpet { float: right;  margin: 10px 20px 0 0;  font-size: 90%; }
+.my-table td, .my-table th { padding: 1px 6px;  margin: 0;  background: #f8f8f8;  border-left: 1px solid #eee;
+		 border-top: 1px solid #eee;  border-bottom: 1px solid #ddd; border-right: 1px solid #ddd;   }
+
+							/****** HEAD *******/
+							
+.head{ height: 121px;  position: relative; }
+.logo { position: absolute;  width: 119px;  height: 82px;  top: 17px;  left: 4px;  background: url(../img/logo.png) no-repeat; }
+.logo-text a { font: bold 17pt/1em "Trebuchet MS",Arial,verdana;  position: absolute;  top: 23px;  left: 140px;
+			  margin: 0;  color: #111;  text-decoration: none; }
+.lista { position: absolute;  bottom: 2px;  left: 211px;  padding: 0;  margin: 0; }
+.lista li { display: inline;  float: left;   margin: 0 13px 0 0;  background: none;  padding: 0; }
+.lista li a { background: #eee;  float: left;  text-decoration: none;  color: #392724;  padding: 5px 20px; }
+.lista li a:hover { background: #ddd; }
+.lista li .sel, .lista li .sel:hover { background: #ddd; }
+
+							/****** MAIN *******/
+
+.main { float: right;  padding: 3px 23px 20px 30px; width: 658px;  background: #ffe; }
+.main-slim { padding: 6px 12px 5px 12px;  }
+
+/* kontakt */
+#kontakt-table { border: none; }
+#kontakt-table td, #kontakt-table th { padding: 3px 9px;  margin: 2px;  }
+#kontakt-table th { padding: 3px 7px 3px 14px;  text-align: right; }
+#kontakt-form { float: right; }
+#kontakt-form h2 { margin: 29px 0 5px; }
+#kontakt-form input { font-family: arial;  padding: 2px 6px;  margin: 0;  width: 194px; }
+#kontakt-form textarea { height: 111px;  font-family: arial;  padding: 2px 6px;  width: 300px; }
+#kontakt-form .sub { width: auto;  padding: 2px 0px;  width: 240px;  margin-left: 30px; }
+.map { margin: 30px 0 17px;  width: 644px;  height: 450px;  padding: 7px;  border: 1px solid #dde;  background: #f8fafd; }
+
+/* CI flashes */
+.flash-all { margin: 20px 5px 0px;  padding: 5px 23px;  -webkit-border-radius: 3px; }
+.flash-succ { border: 1px solid #cdc;  color: #363;  background: #f2fff2; }
+.flash-warn { border: 1px solid #db8;  color: #542;  background: #faf6d9; }
+.flash-alert { border: 1px solid #eba;  color: #400;  background: #fff3f3; }
+.flash-critical { border: 2px solid #faa;  color: #500;  background: #fee;  font-weight: bold; }
+
+							/****** LEFT *******/
+
+.left { width: 196px;  float: left;  padding: 6px 0;  font-size: 94%;  margin-bottom: 30px; }
+
+/* boxíky */
+.box-top { background: url(../img/box-top.png) no-repeat top;  height: 19px;  padding: 6px 0 0 17px;
+	font: bold 10pt/1em "Trebuchet MS",Arial,verdana;  margin-top: 15px; }
+.box-out { background: url(../img/box-bg.png) repeat-y; }
+.box { background: url(../img/box-bott.png) no-repeat bottom;  padding: 8px 6px 9px 13px; }
+.plus { width: 14px;  height: 15px;  float: right;  margin-right: 10px;  text-decoration: none;
+	background: url(../img/minus.png) no-repeat top; }
+.minus { background: url(../img/plus.png) no-repeat top; }
+.plus:hover { background-position: 0 -15px; }
+
+							/****** FOOTER *******/
+							
+.footer { float: right;  width: 661px; background: #fef;  padding: 10px 20px 0 30px;
+		 height: 90px; clear: right;  font-size: 0.9em;  color: #889; }
+.footer a { color: #889; }
+.webmaster { float: right;  font-size: 0.85em;  color: #aab;  margin-top: 2px;  text-decoration: none; }
+#footer p { margin: 0; }

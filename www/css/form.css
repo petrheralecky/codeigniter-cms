@@ -1,0 +1,34 @@
+		/*     recomended form css      */
+
+input, textarea { padding: 3px 6px; }
+textarea { float: left; } /*that is for better position of help icon*/
+.mce { height: 300px; }
+
+							/****** FORM *******/
+
+.s { width: 50px; }
+.m-form .date { width: 247px; }
+.m-form .required { background: #fefefe url(../img/form/hvezda.gif) no-repeat -1px 2px;  border: 1px solid #bbb; }
+.m-form .optional { border: 1px solid #bbb; }
+.m-form .not_valid, .m-form input:invalid, .m-form textarea:invalid { background: #fbe7e2; }
+.m-form .form_errors { background: #fee; }
+.m-form .error_msg { color: red;  margin-left: 10px; }
+.m-form .captcha-br { display: none; }
+.m-form .captcha-img { float: left;  margin: 4px 0; }
+.m-form .captcha-input { margin: 11px 0 0 15px;  width: 100px; }
+
+.m-form a img { border: none; }
+.m-form .form-calendar { width: 23px;  height: 19px;    text-decoration: none;  display: inline-block;
+	border-right: 1px solid #FFF;  border-bottom: 1px solid #FFF;  position: relative;  top: 3px;  margin-left: 5px; }
+.m-form .form-calendar:hover { border-right-color: #ccc;  border-bottom-color: #ccc; }
+.m-form .form-loading { display: none;  background: url(../img/form/shadow.png);  position: absolute;
+							 z-index: 100;  width: 100%;  left: 0;  top: 0; }
+.m-form .form-loading div { font-weight: bold;  font-size: 12pt;  padding: 70px 50px 70px 75px;  background: #fff url(../img/form/loading.gif) no-repeat 25px 50%;
+								position: absolute;  left: 40%;  top: 220px;  border: 1px solid #ddd; }
+
+.m-help { width: 13px;  height: 13px;  background: url(../img/form/help.png) no-repeat;  display: inline-block;
+					margin: 0 5px;  position: relative;  z-index: 0; }
+.m-help span { position: absolute;  width: 215px;  display: none;  top: -12px;  left: 12px;  background: white;
+					padding: 6px 6px 6px 11px;  -webkit-border-radius: 9px;  -webkit-box-shadow: rgba(0, 0, 128, 0.15) 1px 1px 5px;
+					z-index: 100; font: normal 9pt/1.4em Arial,verdana;  border: 1px solid #ddd;  }
+.m-help:hover { background-position: 0 -13px; z-index: 100; }
