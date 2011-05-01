@@ -9,7 +9,7 @@ class Def_model extends Base_model {
 	}
 	public function get_all(){
 		$where = " where 1";
-		$order = " order by id";
+		$order = " order by ".$this->table.".id";
 		$limit = "";
 		$sql = "select *,". $this->table .".id as id from " . $this->table . $this->left_join($this->table) 
 				. $where . $order . $limit;
@@ -32,12 +32,11 @@ class Def_model extends Base_model {
 	// below are useful methods if model has special requirements. Similary works insert, update or load
 	public function save_def($data=NULL,$id=NULL){
 		$this->load($data,$id);
-		if($this->save()){
+		if(($return=$this->save())){
 			// special requirements
 			//$this->uri->save_sef("home/index/".$this->id,$this->data['title']);
-			return true;
 		}
-		return false;
+		return $return;
 	}
 	public function del_def($id=NULL){
 		$this->load(NULL,$id);

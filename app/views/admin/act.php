@@ -28,7 +28,7 @@
 				<span class="m-help _short_text"><span>Krátký a výstižný popis zobrazujícího se už ve výpise.
 					Může se totiž objevit ve vyhledávačích kde by měl zaujmout zákazníka.<br /> (Může zůstat také prázdný)
 					</span></span></div></td></tr>
-	<tr><td>Plný text text:</td><td><? $f->_('<textarea name="text" class="mce wider" ></textarea>'); ?></td></tr>
+	<tr><td>Plný text:</td><td><? $f->_('<textarea name="text" class="mce wider" ></textarea>'); ?></td></tr>
 	<tr><td>&nbsp;</td><td><? $f->_('<input type="submit" value="uložit aktualitu" name="ok" />'); ?></td></tr>
 </table>
 <? $f->stop(); ?>

@@ -1,6 +1,6 @@
 // two styles paths passed to tiny_mce
 //styles = "css/styles.css";
-//styles = "css/mce.css";
+styles = "css/mce_rules.css";
 
 $(document).ready(function(){
 	// rewrite dates to human friendly
@@ -29,11 +29,12 @@ if(window.tinyMCE != undefined){
 	// General options
 	convert_urls : false,
 	relative_urls : false,
+	entities : "38,amp,34,quot,60,lt,62,gt",
 	mode : "specific_textareas",
 	editor_selector : "mce",
 	theme : "advanced",
 	// includes default styles
-	content_css : styles+","+styles2
+	content_css : styles
 	});
 }
 

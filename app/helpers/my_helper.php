@@ -13,17 +13,24 @@ function my_str2url($text)
 	return "";
 }
 
-function my_short_text($text,$lenght=150)
-{
+function my_truncate($text,$lenght=150,$alias="..."){
 	if (is_string($text))
 	{
 		$text = strip_tags($text);
-		$result = substr($text,0,$lenght);
-		if(strlen($result)==$lenght) $result.="...";
-
+		$result = substr($text,0,$lenght-strlen($alias));
+		if(strlen($result) == ($lenght-strlen($alias))) $result .= $alias;
 		return $result;
 	}
 	return "";
+}
+
+function my_truncate_span($text,$lenght=150,$alias="..."){
+	$result = my_truncate($text,$lenght,$alias);
+	if(strlen($result)>=$lenght){
+		return '<span title="'.$text.'">'.$result.'</span>';
+	}else{
+		return $result;
+	}
 }
 
 function my_rand_str($len){
@@ -64,5 +71,17 @@ function t_sites ($prvek=false,$url=0) {
 	);
 	return _typy($names,$prvek,$url);
 
+}
+
+function t_sent ($prvek=false,$url=0) {
+	$names = array(
+		0 => "Neodesláno",
+		1 => "Klient zrušil zasílání", // vyřazeno
+		2 => "Odesláno",
+		3 => "Přečteno",
+		4 => "Proklik",
+		5 => "Nákup",
+	);
+	return _typy($names,$prvek,$url);
 }
 

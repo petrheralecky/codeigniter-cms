@@ -11,9 +11,9 @@ class Sites_model extends Base_model {
 	}
 	public function get_all($type=NULL){
 		$where = " where active=1 ";
-		if($type) $where .= "&& t_sites='".$type."' ";
-		$sql = "select id,title,order_sites,t_sites from " . $this->table  //. $this->left_join($this->table)
-				. $where . " order by t_sites, order_sites";
+		if($type) $where .= "&& id_sites_types='".$type."' ";
+		$sql = "select id,title,order_sites,id_sites_types from " . $this->table  //. $this->left_join($this->table)
+				. $where . " order by id_sites_types, order_sites";
 		$data = $this->db->query($sql)->result_array();
 		return $data;
 	}
@@ -26,6 +26,12 @@ class Sites_model extends Base_model {
 	public function new_order(){
 		$o = $this->db->query("select order_sites from " . $this->table . " where active=1 order by order_sites desc limit 1")->row_array();
 		return $o['order_sites']+2;
+	}
+	public function types(){
+		$result = $this->db->query('select * from sites_types')->result_array();
+		$types = array();
+		foreach($result as $r) $types[] = $r['sites_type'];
+		return $types;
 	}
 	public function del_site($id){
 		$this->load(NULL,$id);

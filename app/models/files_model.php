@@ -29,7 +29,7 @@ class Files_model extends Base_model {
 
 	public function save_file($data=NULL,$id=NULL){
 		$this->load($data,$id);
-		if ($id || $data['file_type']==1){
+		if ($id || (!empty($data['file_type']) && $data['file_type']==1)){
 			return $this->save();
 		}
 		$name = my_str2url($data['uploaded_file']['name']);

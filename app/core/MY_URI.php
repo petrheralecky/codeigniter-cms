@@ -13,11 +13,12 @@ class MY_URI extends CI_Uri {
 
     }
 
-	public function redirect($url="",$permanent=false){
+	public function redirect($url="",$permanent=false,$with_base=false){
 		if($url=="404"){
 			$url = BASE."cokoliv_co_se_presmeruje_na_error";
 		}
 		if($permanent) header("HTTP/1.1 301 Moved Permanently");
+		if(!$with_base) $url = BASE.$url;
 		header("location: ".$url);
 		die();
 	}
@@ -39,7 +40,7 @@ class MY_URI extends CI_Uri {
 		$q = mysql_query($sql);
 		$a = mysql_fetch_array($q);
 		if(empty($a)){
-			return BASE.$path;
+			return BASE.trim($path,"/");
 		}else{
 			return BASE.trim($a['sef'],"/");
 		}
@@ -74,14 +75,14 @@ class MY_URI extends CI_Uri {
 		$q = mysql_query("select sef from urls where url='".trim($this->sef_string,"/")."' order by id desc limit 1");
 		$a = mysql_fetch_array($q);		
 		if(!empty($a)){
-			$this->redirect(BASE.$a['sef'],true);
+			$this->redirect($a['sef'],true);
 		}
 		$e = explode("/",trim($this->sef_string,"/"));
 		$sql = "select sef from urls where url=(select url from urls where sef='".$e[0]."' limit 1) order by id desc limit 1";
 		$q = mysql_query($sql);
 		$a = mysql_fetch_array($q);
 		if(!empty($a['sef']) && $a['sef']!=$e[0]){
-			$this->redirect(BASE.$a['sef'].substr(trim($this->sef_string,"/"),strlen($e[0])),true);
+			$this->redirect($a['sef'].substr(trim($this->sef_string,"/"),strlen($e[0])),true);
 		}
 	}
 
@@ -106,7 +107,7 @@ class MY_URI extends CI_Uri {
 
 	public function back($options = array()){
 		$url = self::back_url($options);
-		$this->redirect($url);
+		$this->redirect($url,0,1);
 	}
 	/**
 	 *

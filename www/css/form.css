@@ -1,9 +1,3 @@
-		/*     recomended form css      */
-
-input, textarea { padding: 3px 6px; }
-textarea { float: left; } /*that is for better position of help icon*/
-.mce { height: 300px; }
-
 							/****** FORM *******/
 
 .s { width: 50px; }

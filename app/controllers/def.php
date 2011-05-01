@@ -1,18 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Def extends CI_Controller {
+class Def extends MY_Controller {
 	public $data;	// view data
 	public $def;	// default model
 
 	function __construct(){
 		parent::__construct();
-		$this->data = $this->controller_model->viewData();
-		$this->load->model('def_model');
 	}
 
-	public function index () {
-		$this->data['def'] = $this->def_model->get_all();
-		
+	public function index () { 
 		$this->load->view('layout/layout',$this->data);
 	}
 

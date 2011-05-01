@@ -1,27 +1,27 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends MY_Controller {
 	public $data;
 
 	public function __construct(){
 		parent::__construct();
-		$this->data = $this->controller_model->viewData();
-
+		//$this->data = $this->controller_model->viewData();
+		Form::$escape_quotes = true;
 		if(!$this->users_model->is_admin()){
 			Tools::flash("Nemáte přístup do administrační částí!");
-			$this->uri->redirect(BASE."home/login");
+			$this->uri->redirect("home/login");
 			$this->uri->back(array('no_controller'=>'admin','no_action'=>'logout','action'=>'login'));
 		}
 		$this->load->helper('image_helper');
 	}
 
-	function index () {
+	function index () { 
 		$f = new Form("settings",array("data"=>$this->data['settings']));
 		if($f->ready()){
-			$data = $f->get_data();
+			$data = $f->get_data(); 
 			if($this->settings_model->save_settings($data)){
 				Tools::flash("uloženo...","succ");
-				$this->uri->redirect(BASE."admin");
+				$this->uri->redirect("admin");
 			}
 		}
 
@@ -36,7 +36,7 @@ class Admin extends CI_Controller {
 		if($edit_id){
 			if(!($this->data['item'] = $this->def->get_one($edit_id))){
 				Tools::flash("Zadaná stránka nebyla nalezena...");
-				$this->uri->redirect(BASE."admin");
+				$this->uri->redirect("admin");
 			}
 			$f->load_data($this->data['item']);
 		}
@@ -44,7 +44,7 @@ class Admin extends CI_Controller {
 			$data = $f->get_data();
 			if ($this->def->save($data,$edit_id)){
 				Tools::flash ("uloženo...","succ");
-				$this->uri->redirect(BASE."admin/links");
+				$this->uri->redirect("admin/links");
 			}else{
 				Tools::flash ("Nelze vložit data, Admin::action().","critical");
 				$this->uri->back();
@@ -62,14 +62,14 @@ class Admin extends CI_Controller {
 		$f = new Form("links");
 		if($edit_id){
 			if(!($this->data['item'] = $this->def->get_one($edit_id)))
-				$this->uri->redirect(BASE."admin/links");
+				$this->uri->redirect("admin/links");
 			$f->load_data($this->data['item']);
 		}
 		if($f->ready()){
 			$data = $f->get_data();
 			if ($this->def->save($data,$edit_id)){
 				Tools::flash ("uloženo...","succ");
-				$this->uri->redirect(BASE."admin/links");
+				$this->uri->redirect("admin/links");
 			}
 			else
 				Tools::flash ("Nelze vložit data, Admin::links().","critical");
@@ -86,7 +86,7 @@ class Admin extends CI_Controller {
 		$f = new Form("ref");
 		if($edit_id){
 			$this->data['item'] = $this->def->get_one($edit_id);
-			if(empty($this->data['item'])) $this->uri->redirect(BASE."admin/reference");
+			if(empty($this->data['item'])) $this->uri->redirect("admin/reference");
 			$f->load_data($this->data['item']);
 		}else{
 			$f->load_data(array('order_reference'=>$this->def->new_order()));
@@ -95,7 +95,7 @@ class Admin extends CI_Controller {
 			$data = $f->get_data();
 			if ($this->def->save_reference($data,$edit_id)){
 				Tools::flash ("uloženo...","succ");
-				$this->uri->redirect(BASE."admin/reference");
+				$this->uri->redirect("admin/reference");
 			}
 			else
 				Tools::flash ("Nelze vložit data, Admin::links().","critical");
@@ -112,14 +112,14 @@ class Admin extends CI_Controller {
 		$f = new Form("act");
 		if($edit_id){
 			$this->data['item'] = $this->def->get_one($edit_id);
-			if(empty($this->data['item'])) $this->uri->redirect(BASE."admin/act");
+			if(empty($this->data['item'])) $this->uri->redirect("admin/act");
 			$f->load_data($this->data['item']);
 		}
 		if($f->ready()){
 			$data = $f->get_data();
 			if ($this->def->save_act($data,$edit_id)){
 				Tools::flash ("uloženo...","succ");
-				$this->uri->redirect(BASE."admin/act");
+				$this->uri->redirect("admin/act");
 			}
 			else
 				Tools::flash ("Nelze vložit data, Admin::links().","critical");
@@ -139,7 +139,7 @@ class Admin extends CI_Controller {
 			$data = $f->get_data();
 			if ($this->def->save_site($data,$edit_id)){
 				Tools::flash ("uloženo...","succ");
-				$this->uri->redirect(BASE."admin/sites");
+				$this->uri->redirect("admin/sites");
 			}
 			else
 				Tools::flash ("Nelze vložit data, Admin::sites().","critical");
@@ -147,7 +147,7 @@ class Admin extends CI_Controller {
 		}
 		if($edit_id){
 			$this->data['item'] = $this->def->get_one($edit_id);
-			if(empty($this->data['item'])) $this->uri->redirect(BASE."admin/sites");
+			if(empty($this->data['item'])) $this->uri->redirect("admin/sites");
 			$f->load_data($this->data['item']);
 		}else{
 			$f->load_data(array('order_sites'=>$this->def->new_order()));
@@ -177,7 +177,7 @@ class Admin extends CI_Controller {
 			}
 			if ($this->def->save_file($data,$edit_id)){
 				Tools::flash ("uloženo...","succ");
-				$this->uri->redirect(BASE."admin/files");
+				$this->uri->redirect("admin/files");
 			}
 		}
 		$this->data['items'] = $this->def->get_all();
@@ -192,7 +192,7 @@ class Admin extends CI_Controller {
 			//die(var_dump($this->data['form_user']));
 			if(empty($this->data['form_user'])){
 				Tools::flash("Tento uživatel (id: ".$id.") již neexistuje");
-				$this->uri->redirect(BASE."admin/users");
+				$this->uri->redirect("admin/users");
 			}
 			$f->load_data($this->data['form_user']);
 		}

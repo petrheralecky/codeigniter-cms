@@ -1,14 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Home extends MY_Controller {
 	public $data;
 
 	function __construct(){
 		parent::__construct();
-		$this->data = $this->controller_model->viewData();
 	}
 
-	// 
 	function index ($id=NULL) { 
 		if(empty($id) || !is_numeric($id)){
 			//$this->uri->redirect(404);
@@ -35,10 +33,6 @@ class Home extends CI_Controller {
 		}
 		$contact_data['f'] = $f_contact;
 
-		//$this->load->model('sluzby_model');
-		//$this->data['sluzby'] = $this->sluzby_model->get_all();
-
-		
 		$cont = $site['content'];
 		$cont = str_replace('##base##', BASE, $cont);
 		$cont = str_replace('##banner##', $this->load->view('pieces/banner',array(),true), $cont);
@@ -57,7 +51,7 @@ class Home extends CI_Controller {
 
 	function login (){
 		if($this->users_model->is_admin()){
-			$this->uri->redirect(BASE."admin");
+			$this->uri->redirect("admin");
 		}
 		$f = new Form("login");
 		if($f->ready()){
@@ -65,7 +59,7 @@ class Home extends CI_Controller {
 			if($this->users_model->login($data)){
 				Ses::user($this->users_model->data);
 				Tools::flash("přístup do administrace povolen","succ");
-				$this->uri->redirect(BASE."admin");
+				$this->uri->redirect("admin");
 			}else{
 				Tools::flash("Zadal jste špatný login nebo heslo","alert");
 			}
@@ -102,7 +96,7 @@ class Home extends CI_Controller {
 	function logout (){
 		Ses::user_destroy();
 		Tools::flash("byl jste úspěšně odhlášen","succ");
-		$this->uri->back(array('no_controller'=>'admin','no_action'=>'logout'));
+		$this->uri->redirect("");
 	}
 
 
