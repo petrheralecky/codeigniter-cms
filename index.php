@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-include "app/helpers/form/form.php";
+include "../scripts/form/form/form.php";
 
 // can be: local, test, hard
-define('SERVER', 'test');
+define('SERVER', 'local');
 
 /*
  *---------------------------------------------------------------
