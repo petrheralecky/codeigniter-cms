@@ -13,7 +13,9 @@ class MY_Controller extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		
+
+		Form::$img_app_path = FORM_IMG_APP_PATH;
+
 		$this->data['settings'] = $this->settings_model->get_all();
 		$this->data['controller'] = $this->uri->rsegment(1);
 		$this->data['action'] = $this->uri->rsegment(2);

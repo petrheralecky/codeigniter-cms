@@ -3,3 +3,12 @@
 /app/core/MY_Controller.php
 /app/errors/error_404.php
 /soubory
+/.htaccess
+/index.php
+/robots.txt
+/sitemap.xml
+
+/app/controllers
+/app/views
+/app/logs
+/www

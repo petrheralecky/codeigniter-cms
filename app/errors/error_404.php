@@ -1,3 +1,3 @@
 <?php
 
-header("location: ".BASE."mail/index/error:404");
+header("location: " . BASE . DEFAULT_CONTROLLER . "/index/error:404");

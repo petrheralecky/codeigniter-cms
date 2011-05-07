@@ -1,0 +1,139 @@
+.wt-rotator{
+font-family:Arial,Helvetica,sans-serif;
+font-size:12px;
+background-color:#eef;
+border:1px solid #aba;
+-webkit-border-radius: 2px;
+position:relative;
+width:390px;
+height:130px;
+overflow:hidden;
+-webkit-box-shadow: 2px 2px 10px #ddd;
+margin: 27px 0;
+}
+.wt-rotator a{
+outline:none;
+}
+.main-img{
+display:none;
+position:absolute;
+top:0;
+left:0;
+z-index:0;
+border:0px;
+}
+.preloader{
+background:#000 url(../img/rotator/loader.gif) no-repeat center;
+float:left;
+width:34px;
+height:34px;
+position:absolute;
+top:0;
+left:0;
+z-index:4;
+display:none;
+}
+#timer{
+position:absolute;
+top:0;
+left:0;
+height:4px;
+background-color:#FFF;
+z-index:4;
+visibility:hidden;
+}
+.desc{
+color:#FFF;
+background:transparent url(../img/rotator/panel_bg.png) repeat;
+position:absolute;
+top:0;
+left:0;
+z-index:6;
+overflow:hidden;
+visibility:hidden;
+}
+.inner-text{
+padding:10px;
+}
+.c-panel{
+position:relative;
+float:left;
+top:0;
+left:0;
+z-index:7;
+visibility:hidden;
+}
+.thumbnails,.buttons{
+float:left;
+}
+.thumbnails ul{
+list-style:none;
+margin:0;
+padding:0;
+}
+.thumbnails li,
+.play-btn,.prev-btn,.next-btn{
+list-style:none;
+display:block;
+float:left;
+margin-right:4px;
+overflow:hidden;
+width:24px;
+height:24px;
+line-height:24px;
+text-align:center;
+color:#FFF;
+background: inherit;
+background-color:#000;
+border:1px solid #999;
+cursor:pointer;
+font-weight:bold;
+padding: inherit;
+}
+.thumbnails li.thumb-over{
+color:#000;
+background-color:#FFF;
+}
+.thumbnails li.curr-thumb{
+color:#000;
+background-color:#FFF;
+}
+.thumbnails li *{
+display:none;
+}
+.play-btn{
+background:#000 url(../img/rotator/play.png) no-repeat center;
+}
+.pause{
+background:#000 url(../img/rotator/pause.png) no-repeat center;
+}
+.prev-btn{
+background:#abc url(../img/rotator/prev.png) no-repeat center;
+}
+.next-btn{
+background:#abc url(../img/rotator/next.png) no-repeat center;
+}
+.button-over{
+background-color:#DDD;
+}
+#tool-tip{
+font-family:Arial,Helvetica,sans-serif;
+font-size:12px;
+color:#FFF;
+background:transparent url(../img/rotator/panel_bg.png) repeat;
+padding:4px;
+position:absolute;
+top:0;
+left:0;
+max-width:300px;
+z-index:9999;
+display:none;
+}
+.block,.vpiece,.hpiece{
+position:absolute;
+z-index:2;
+}
+/*deprecated styles*/
+#bg-img,#main-img,#tooltip,.preloader img{
+display:none;
+}
