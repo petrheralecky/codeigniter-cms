@@ -1,12 +1,11 @@
 <h1>Podstránky</h1>
-
 <div class="center">
 <fieldset>
 	<a href="<?=BASE?>admin/sites" class="clean">vyčistit formulář</a>
 	<?$f->start()?>
 	<table>
-		<tr><td width="130">Typ podstránky:</td><td><?$f->_('<select class="t-sites" name="t_sites" >',t_sites())?> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-				pořadové číslo: &nbsp; <?$f->_('<input name="order_sites" style="width: 29px;">',1,'order')?>
+		<tr><td width="130">Typ podstránky:</td><td><?$f->_('<select class="id_sites_types" name="t_sites" >',$types)?> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+				strom (pořadí): &nbsp; <?$f->_('<input name="tree" style="width: 29px;">',1)?>
 				<span class="m-help _order_sites"><span>pro slouží ke změně pořadí stránek</span></span>
 			</td></tr>
 		<tr><td>Titulek:</td><td><?$f->_('<input name="title" />',1)?>
@@ -30,8 +29,8 @@
 <div class="left">
 <table class="table-br">
 	<? $type=0; foreach($items as $p): ?>
-		<? if($type!=$p['t_sites']): $type=$p['t_sites']; ?>
-		<tr><th colspan="2" style="padding-top: 10px;"><em><?=t_sites($type)?></em></th></tr>
+		<? if($type!=$p['id_sites_types']): $type=$p['id_sites_types']; ?>
+		<tr><th colspan="2" style="padding-top: 10px;"><em><?=$p['sites_type']?></em></th></tr>
 		<? endif; ?>
 		<tr>
 			<td><a href="<?=BASE?>admin/sites/<?=$p['id']?>"><?=$p['title']?></a></td>

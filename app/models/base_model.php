@@ -78,12 +78,7 @@ class Base_model extends CI_Model {
 		Tools::flash("Base_model->update() unknow error ... updated data: " . var_export($this->data,1),"critical");
 		return false;
 	}
-	public function insert($data=array(),$options=array()){
-		if(isset($options['table'])){
-			$table = $options['table'];
-		}else{
-			$table = $this->table;
-		}
+	public function insert($data=array()){
 		$this->load($data,NULL);
 		$columns = array();
 		$q = $this->db->query("show columns from " . $table);
@@ -91,6 +86,9 @@ class Base_model extends CI_Model {
 		foreach($structure as $column){
 			$columns[] = $column['Field'];
 		}
+
+		if(in_array("tree",$columns)) $data['tree']	= $this->get_tree($data['parent_id']); // with tree
+
 		$names = ""; $values = "";
 		$c = 0;
 		/// insert existing id
@@ -151,6 +149,58 @@ class Base_model extends CI_Model {
 			}
 		}
 		return $result;
+	}
+
+	/**
+	 * Order items into tree structure!
+	 *
+	 * @param int id of object
+	 * @param string value of tree after which this object should be placed
+	 *					- use 0 for order like first (with 3rd param true)
+	 *					-
+	 * @param bool make child or neighbor? (childrens are usually new, neighbor for reorder)
+	 *
+	 * @return string like tree
+	 */
+	public function order($id = null, $parent_tree = false, $place_like_next = false){
+		$this->load(null,$id);
+		if($parent_tree===false){ // new item in the end
+			$t = $this->db->query("select tree from " . $this->table . " order by tree desc limit 1")->row_array();
+			$tree = sprintf("%09s",$t['tree']+1);
+		}else{
+			if(!$place_like_next){ // new child
+				$t = $this->db->query("select tree from " . $this->table . "
+					where tree like '". $parent_tree ."-%' order by tree desc limit 1")->row_array();
+				if(empty($t)){
+					$tree = $parent_tree . "-" . sprintf("%09s",1);
+				}else{
+					$e = explode("-",$t['tree']);
+					$tree = $parent_tree . "-" . array_pop($e);
+				}
+			}else{ // reorder
+				$e = explode($parent_tree);
+				$next_ind = sprintf("%09s",array_pop($e)+1); // next last index
+				unset($e[count($e)-1]);
+				$tree = implode("-",$e) . "-" . $next_ind; // build next tree in same level
+				$tree_exists = $this->db->query("select id from " . $this->table .
+						"where tree = '". $tree ."' limit 1")->row_array();
+				if(!empty($tree_exists)){ // replace tree on this place
+					$this->order($tree_exists['id'],$tree,true);
+				}
+			}
+		}
+		// rewrite old tree
+		$this->data['tree'] = $tree;
+		$parent = $this->db->query("select * from " . $this->table .
+				"where id = '". $this->id ."'")->row_array(); //
+		$that_tree = $this->db->query("select * from " . $this->table .
+				"where tree like '". $parent['tree'] ."%'")->result_array();
+		foreach($that_tree as $child){
+			$this->db->query("update " . $this->table . " set tree='" .
+					str_replace($parent['tree'], $this->data['tree'], $child['tree']) . "' " .
+					"where id='" . $child['id'] . "'");
+		}
+		return $this->data['tree'];
 	}
 
 	// there are same methods like in all models. Usually are replaced in child model classes.

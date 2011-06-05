@@ -33,7 +33,7 @@
 	foreach($sites as $s){
 		echo "<li><a ";
 		if(!empty($uri_array[3]) && $s['id']==$uri_array[3] && $action=="index"){ echo "class='sel' "; }
-		echo "href=".$this->uri->sef("home/index/".$s['id']).">";
+		echo "href=".$this->uri->sef("home/site/".$s['id']).">";
 		echo "<span>".$s['title']."</span></a></li>";
 	}
 	?>

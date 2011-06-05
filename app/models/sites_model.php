@@ -12,8 +12,8 @@ class Sites_model extends Base_model {
 	public function get_all($type=NULL){
 		$where = " where active=1 ";
 		if($type) $where .= "&& id_sites_types='".$type."' ";
-		$sql = "select id,title,order_sites,id_sites_types from " . $this->table  //. $this->left_join($this->table)
-				. $where . " order by id_sites_types, order_sites";
+		$sql = "select sites.id as id,title,tree,id_sites_types,sites_type from " . $this->table  . $this->left_join($this->table)
+				. $where . " order by id_sites_types, tree";
 		$data = $this->db->query($sql)->result_array();
 		return $data;
 	}
@@ -23,14 +23,11 @@ class Sites_model extends Base_model {
 		$item = $this->db->query($sql)->row_array();
 		return $item;
 	}
-	public function new_order(){
-		$o = $this->db->query("select order_sites from " . $this->table . " where active=1 order by order_sites desc limit 1")->row_array();
-		return $o['order_sites']+2;
-	}
+	
 	public function types(){
 		$result = $this->db->query('select * from sites_types')->result_array();
 		$types = array();
-		foreach($result as $r) $types[] = $r['sites_type'];
+		foreach($result as $r) $types[$r['id']] = $r['sites_type'];
 		return $types;
 	}
 	public function del_site($id){
@@ -41,7 +38,7 @@ class Sites_model extends Base_model {
 	public function save_site($data=NULL,$id=NULL){
 		$this->load($data,$id);
 		$return = $this->save();
-		$this->uri->save_sef("home/index/".$this->id,!empty($this->data['title_seo'])?$this->data['title_seo']:$this->data['title']);
+		$this->uri->save_sef("home/site/".$this->id,!empty($this->data['title_seo'])?$this->data['title_seo']:$this->data['title']);
 		return $return;
 	}
 }

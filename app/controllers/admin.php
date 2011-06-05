@@ -149,10 +149,9 @@ class Admin extends MY_Controller {
 			$this->data['item'] = $this->def->get_one($edit_id);
 			if(empty($this->data['item'])) $this->uri->redirect("admin/sites");
 			$f->load_data($this->data['item']);
-		}else{
-			$f->load_data(array('order_sites'=>$this->def->new_order()));
 		}
 		$this->data['items'] = $this->def->get_all();
+		$this->data['types'] = $this->def->types();
 		$this->data['f'] = $f;
 		$this->load->view('layout/admin',$this->data);
 	}

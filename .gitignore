@@ -1,13 +1,15 @@
-
+*_default*
+*_ignore*
+*captcha*
 /app/config
 /app/core/MY_Controller.php
 /app/errors/error_404.php
+/app/helpers/form
 /soubory
 /.htaccess
 /index.php
 /robots.txt
 /sitemap.xml
-
 /app/controllers
 /app/views
 /app/logs

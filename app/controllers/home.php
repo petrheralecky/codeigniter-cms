@@ -7,7 +7,7 @@ class Home extends MY_Controller {
 		parent::__construct();
 	}
 
-	function index ($id=NULL) { 
+	function site ($id=NULL) {
 		if(empty($id) || !is_numeric($id)){
 			//$this->uri->redirect(404);
 		}else{
