@@ -12,5 +12,5 @@
 /app/controllers
 /app/views
 /app/logs
-/www*
+www/
 /www
