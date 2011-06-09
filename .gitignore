@@ -1,8 +1,6 @@
-*_default*
 *_ignore*
 /app/config
-/app/core/MY_Controller.php
-/app/errors/error_404.php
+/app/core/BASE_Controller.php
 /app/helpers/form
 /soubory
 /.htaccess
@@ -12,5 +10,5 @@
 /app/controllers
 /app/views
 /app/logs
-www/
 /www
+/app/config
