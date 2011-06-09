@@ -9,7 +9,10 @@
  *
  * @author Melounek
  */
-class MY_Controller extends CI_Controller {
+
+require_once("app/controllers/BASE_Controller.php");
+
+class MY_Controller extends BASE_Controller {
 
 	public function __construct(){
 		parent::__construct();

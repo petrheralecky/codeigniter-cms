@@ -1,5 +1,4 @@
 <h1>Aktuality</h1>
-
 <div class="center">
 <fieldset>
 	<a href="<?=BASE?>admin/act" class="clean">vyčistit formulář</a>

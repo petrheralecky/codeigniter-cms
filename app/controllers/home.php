@@ -7,6 +7,11 @@ class Home extends MY_Controller {
 		parent::__construct();
 	}
 
+	function index(){
+		if(isset($_GET['error']) && $_GET['error']==404) Tools::flash("404 - Tato stránka bohužel neexistuje. Byli jste přesměrováni na hlavní stranu","warn");
+		$this->load->view('layout/layout',$this->data);
+	}
+
 	function site ($id=NULL) {
 		if(empty($id) || !is_numeric($id)){
 			//$this->uri->redirect(404);
@@ -14,7 +19,6 @@ class Home extends MY_Controller {
 			$site = $this->sites_model->get_one($id);
 			if(empty($site)) $this->uri->redirect(404);
 		}
-		if(isset($_GET['error']) && $_GET['error']==404) Tools::flash("404 - Tato stránka bohužel neexistuje. Byli jste přesměrováni na hlavní stranu","warn");
 		$this->load->model("mail_model");
 		$this->data['mail_model'] = $this->mail_model;
 		// vyřízení kontaktního formuláře
@@ -46,7 +50,6 @@ class Home extends MY_Controller {
 		$this->data['description'] = $site['description'];
 		$this->data['view_content'] = $cont;
 		$this->load->view('layout/layout',$this->data);
-
 	}
 
 	function login (){

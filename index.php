@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-include "../scripts/form/form/form.php";
-
 // can be: local, test, hard
 define('SERVER', 'local');
 
