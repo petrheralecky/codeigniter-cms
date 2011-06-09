@@ -1,6 +1,5 @@
 *_default*
 *_ignore*
-*captcha*
 /app/config
 /app/core/MY_Controller.php
 /app/errors/error_404.php
@@ -13,4 +12,5 @@
 /app/controllers
 /app/views
 /app/logs
+/www*
 /www
