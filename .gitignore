@@ -1,15 +1,13 @@
 *_ignore*
-
 *.svn*
 /app/config
-/app/core/BASE_Controller.php
+/app/core/MY_Controller.php
 /app/helpers/form
 /soubory
 /.htaccess
 /index.php
 /robots.txt
 /sitemap.xml
-/app/controllers
 /app/views
 /app/logs
 /www
