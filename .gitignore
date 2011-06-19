@@ -1,4 +1,5 @@
 *_ignore*
+
 *.svn*
 /app/config
 /app/core/BASE_Controller.php
