@@ -46,9 +46,9 @@ class Base_model extends CI_Model {
 		}
 	}
 
-    public function update($data=array(),$id=NULL){
+    public function update($data=array(), $id=NULL, $table=NULL){
+		if($table !== NULL) $this->table = $table;
 		$this->load($data,$id);
-		
 		$columns = array();
 		$q = $this->db->query("show columns from " . $this->table);
 		$structure = $q->result_array($q);
@@ -78,10 +78,11 @@ class Base_model extends CI_Model {
 		Tools::flash("Base_model->update() unknow error ... updated data: " . var_export($this->data,1),"critical");
 		return false;
 	}
-	public function insert($data=array()){
+	public function insert($data=array(),$table=NULL){
+		if($table !== NULL) $this->table = $table;
 		$this->load($data,NULL);
 		$columns = array();
-		$q = $this->db->query("show columns from " . $table);
+		$q = $this->db->query("show columns from " . $this->table);
 		$structure = $q->result_array($q);
 		foreach($structure as $column){
 			$columns[] = $column['Field'];
@@ -93,7 +94,7 @@ class Base_model extends CI_Model {
 		$c = 0;
 		/// insert existing id
 		if(!empty($this->data['id'])){
-			$select_id = $this->db->query("select id from ".$table." where id='".$this->data['id']."'")->row_array();
+			$select_id = $this->db->query("select id from ".$this->table." where id='".$this->data['id']."'")->row_array();
 		}
 		if(isset($this->data['id']) && !empty($select_id)){
 			$saved_id = $this->data['id'];
@@ -108,14 +109,14 @@ class Base_model extends CI_Model {
 			
 		}
 		if($names!=""){
-			$q = "insert into ".$table." ({$names}) values ({$values})";
+			$q = "insert into ".$this->table." ({$names}) values ({$values})";
 			if($this->db->query($q)){
 				$insert_id = $this->db->insert_id();
 				//Tools::log("Base_model->insert() id: " . $this->db->insert_id() . " data: " . var_export($this->data,1),3 );
 			}
 			if(isset($saved_id) && $saved_id){
-				$this->del($saved_id,array('table'=>$table));
-				$this->db->query("update ".$table." set id=".$saved_id." where id=".$insert_id);
+				$this->del($saved_id,array('table'=>$this->table));
+				$this->db->query("update ".$this->table." set id=".$saved_id." where id=".$insert_id);
 				$insert_id = $saved_id;
 				Tools::log("Base_model->insert() overwrites product id " . $saved_id ,4 );
 			}
