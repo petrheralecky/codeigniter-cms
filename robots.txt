@@ -1,6 +1,8 @@
 User-agent: googlebot-image
 
 User-agent: *
+
+
 Disallow: /www/
 Disallow: /admin/
 Disallow: /cron/
