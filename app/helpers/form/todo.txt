@@ -1,0 +1,23 @@
+zastavit cyklení javascriptu
+checkbox value="1"
+select kolekce
+id = name
+dodelat metodu have_errors()
+
+BUGS:
+
+1.
+<input name="j[2]" value="a" />
+<input name="j[1]" value="b" />
+get_data() => array(2=>a, 3=>b);
+... je potřeba přetvořit funkci str2array aby brala $_POST a filtrované hodnoty teprve opravovala z $this->form_data
+
+2.
+Files nejdou strkat do pole
+<input type="file" name="j[0]" - get_data si s tím neporadí
+
+3.
+get_data nevrátí samotný submit
+
+4.
+radiobuttony s názvem např: button[1] nevrací výsledky v poli

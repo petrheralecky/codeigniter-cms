@@ -17,7 +17,9 @@ class MY_Controller extends BASE_Controller {
 	public function __construct(){
 		parent::__construct();
 
-
+		Form::$img_path = BASE . "www/img/form/";
+		Form::$img_app_path = "./www/img/form/";
+		Form::$ajax_path = BASE . "/ajax/form";
 
 		$this->data['settings'] = $this->settings_model->get_all();
 		$this->data['controller'] = $this->uri->rsegment(1);

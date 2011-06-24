@@ -289,7 +289,6 @@ class FormValidators
 	public function wwwFilter(&$value){
 		if($this->_www($value)){
 			$this->diakritikaFilter($value);
-			$value = strtolower($value);
 			if(strpos($value,"http://")===false && strpos($value,"https://")===false){
 				$value = "http://" . $value;
 			}
