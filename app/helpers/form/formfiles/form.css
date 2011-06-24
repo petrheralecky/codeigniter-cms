@@ -1,0 +1,15 @@
+.melou-form .required { background: #fefefe; }
+.melou-form .optional { background: #f4f4f4; }
+.melou-form .not_valid { background: #fbe7e2; }
+.melou-form .form_errors { background: #fee; }
+.melou-form .error_msg { color: red;  margin-left: 10px; }
+.melou-form .captcha-br { display: none; }
+.melou-form .captcha-img { float: left;  margin: 4px 0; }
+.melou-form .captcha-input { margin: 11px 0 0 15px;  width: 100px; }
+
+.melou-form a img { border: none; }
+.melou-form .form-calendar { width: 23px;  height: 19px;    text-decoration: none;  display: inline-block;  
+	border-right: 1px solid #FFF;  border-bottom: 1px solid #FFF;  position: relative;  top: 3px;  margin-left: 5px; }
+.melou-form .form-calendar:hover { border-right-color: #ccc;  border-bottom-color: #ccc; }
+
+.melou-form .CuteEditorButton { width: auto; }
