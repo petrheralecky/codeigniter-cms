@@ -11,7 +11,7 @@
 */
 
 // global
-define("ID","_def_ci"); // site id
+define("ID","firmy"); // site id
 define("DEFAULT_CONTROLLER","home"); // path to root folder
 define("FORM_IMG_APP_PATH","www/img/form/");
 
